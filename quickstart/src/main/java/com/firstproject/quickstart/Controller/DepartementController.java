@@ -4,6 +4,8 @@ import com.firstproject.quickstart.Repository.DepartmentRepository;
 import com.firstproject.quickstart.Service.DepartmentService;
 import com.firstproject.quickstart.entity.Department;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,13 +18,17 @@ public class DepartementController {
     @Autowired
     DepartmentService departmentService;
 
+    private final Logger LOGGER = LoggerFactory.getLogger(DepartementController.class);
+
     @PostMapping("/departments")
     public Department saveDepartement(@Valid @RequestBody Department department){
+        LOGGER.info("Inside the post request of department");
         return departmentService.saveDepartment(department);
     }
 
     @GetMapping("/departments")
     public List<Department> fetchDepartmentList(){
+        LOGGER.info("Inside the get dept request of department");
         return departmentService.fetchDepartmentList();
     }
 
