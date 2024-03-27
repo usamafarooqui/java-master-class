@@ -3,6 +3,7 @@ package com.firstproject.quickstart.Controller;
 import com.firstproject.quickstart.Repository.DepartmentRepository;
 import com.firstproject.quickstart.Service.DepartmentService;
 import com.firstproject.quickstart.entity.Department;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class DepartementController {
     DepartmentService departmentService;
 
     @PostMapping("/departments")
-    public Department saveDepartement(@RequestBody Department department){
+    public Department saveDepartement(@Valid @RequestBody Department department){
         return departmentService.saveDepartment(department);
     }
 
